@@ -1288,8 +1288,12 @@ namespace Microsoft.Exchange.WebServices.Autodiscover
         /// <returns></returns>
         private ICollection<string> DefaultGetScpUrlsForDomain(string domainName)
         {
+#if NetCore
+            return new List<string>();
+#else
             DirectoryHelper helper = new DirectoryHelper(this);
             return helper.GetAutodiscoverScpUrlsForDomain(domainName);
+#endif
         }
 
         /// <summary>

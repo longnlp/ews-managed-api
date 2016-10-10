@@ -22,7 +22,8 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
  */
-
+#if NetCore
+#else
 namespace Microsoft.Exchange.WebServices.Autodiscover
 {
     using System;
@@ -38,7 +39,7 @@ namespace Microsoft.Exchange.WebServices.Autodiscover
     /// </summary>
     internal class DirectoryHelper
     {
-        #region Static members
+#region Static members
 
         /// <summary>
         /// Maximum number of SCP hops in an SCP host lookup call.
@@ -60,13 +61,13 @@ namespace Microsoft.Exchange.WebServices.Autodiscover
         /// </summary>
         private const string ScpFilterString = "(&(objectClass=serviceConnectionPoint)(|(keywords=" + ScpPtrGuidString + ")(keywords=" + ScpUrlGuidString + ")))";
 
-        #endregion
+#endregion
 
-        #region Private members
+#region Private members
 
         private ExchangeServiceBase service;
 
-        #endregion
+#endregion
 
         /// <summary>
         /// Gets the SCP URL list for domain.
@@ -342,7 +343,6 @@ namespace Microsoft.Exchange.WebServices.Autodiscover
                     return this.GetScpUrlList(domainName, fallBackLdapPath, ref maxHops);
                 }
             }
-
             // Return the list with 0 or more SCP URLs.
             return scpUrlList;
         }
@@ -383,7 +383,7 @@ namespace Microsoft.Exchange.WebServices.Autodiscover
             this.Service.TraceMessage(TraceFlags.AutodiscoverConfiguration, message);
         }
 
-        #region Constructors
+#region Constructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DirectoryHelper"/> class.
@@ -393,15 +393,16 @@ namespace Microsoft.Exchange.WebServices.Autodiscover
         {
             this.service = service;
         }
-        #endregion
+#endregion
 
-        #region Properties
+#region Properties
 
         internal ExchangeServiceBase Service
         {
             get { return this.service; }
         }
 
-        #endregion
+#endregion
     }
 }
+#endif

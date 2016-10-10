@@ -1,0 +1,38 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>  
+		<Major>1</Major>
+		<Minor>0</Minor>
+		<Build>0</Build>
+		<Revision>0</Revision>
+		<MSBuildCommunityTasksPath>C:\Program Files (x86)\MSBuild\MSBuildCommunityTasks</MSBuildCommunityTasksPath>
+		<AssemblyFile>..\Properties\AssemblyInfoOpenSource.cs</AssemblyFile>
+		<ProjectFile>..\project.json</ProjectFile>
+		<BinRoot>..\bin</BinRoot>
+		<NugetPkgs>..\nupkgs</NugetPkgs>
+	</PropertyGroup> 
+
+	<!-- Import the AssemblyInfo task -->
+	<Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.Targets"/>
+	
+	<ItemGroup>
+		<AssemblyVersionFiles Include="..\Properties\AssemblyInfoOpenSource.cs"/>
+	</ItemGroup>
+	
+	<Target Name="UpdateAssemblyVersion" >
+		<FileUpdate Files="$(AssemblyFile)" Encoding="utf-8" Regex='AssemblyVersion\(\&quot;(\d+)\.(\d+)(\.(\d+)\.(\d+)|\.*)\&quot;\)' ReplacementText='AssemblyVersion(&quot;$(Major).$(Minor).$(Build).$(Revision)&quot;)' />
+		<FileUpdate Files="$(AssemblyFile)" Encoding="utf-8" Regex='AssemblyFileVersion\(\&quot;(\d+)\.(\d+)(\.(\d+)\.(\d+)|\.*)\&quot;\)' ReplacementText='AssemblyFileVersion(&quot;$(Major).$(Minor).$(Build).$(Revision)&quot;)' />
+		<FileUpdate Files="$(ProjectFile)" Encoding="utf-8" Regex='\&quot;(\d+)\.(\d+)\.(\d+)-\*\&quot;' ReplacementText='&quot;$(Major).$(Minor).$(Build)-*&quot;' />
+	</Target>
+	
+	<Target Name="Clean" >
+		<Exec Condition="Exists('$(BinRoot)')" Command="del  /Q /F /S $(BinRoot)\*.*"></Exec>
+		<Exec Condition="Exists('$(BinRoot)')" Command="rd  /Q /S $(BinRoot)"></Exec>
+		<Exec Condition="Exists('$(NugetPkgs)')" Command="del  /Q /F /S $(NugetPkgs)\*.*"></Exec>
+		<Exec Condition="Exists('$(NugetPkgs)')" Command="rd  /Q /S $(NugetPkgs)"></Exec>
+	</Target>
+	
+	<Target Name="Compile" DependsOnTargets="UpdateAssemblyVersion">
+		<MSBuild Projects="..\Microsoft.Exchange.WebServices.Data.sln"     
+				Properties="Configuration=Release;Platform=Any CPU;Optimize=true" />
+	</Target>
+ </Project>

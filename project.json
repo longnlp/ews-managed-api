@@ -1,0 +1,59 @@
+﻿{
+  "name": "EWSCore",
+  "version": "0.0.1-*",
+  "title": "Microsoft Exchange Managed API",
+  "copyright": "© Microsoft Corporation.  All rights reserved.",
+  "description": "Microsoft Exchange Web Services (EWS Managed API)",
+
+  "dependencies": {
+
+  },
+
+  "frameworks": {
+    "net35": {
+      "frameworkAssemblies": {
+        "System.Xml": "2.0.0.0",
+        "System.Web": "2.0.0.0",
+        "System.Web.Services": "2.0.0.0",
+        "System.Data": "2.0.0.0",
+        "System.DirectoryServices": "2.0.0.0",
+        "System.Drawing": "2.0.0.0",
+        "System.Security": "2.0.0.0"
+      }
+    }
+    //"netstandard1.3": {
+    //  "imports": "dotnet",
+    //  "dependencies": {
+    //    "NETStandard.Library": "1.6.0",
+    //    "System.Xml.XmlDocument": "4.0.0",
+    //    "System.Runtime.Serialization.Formatters": "4.0.0-rc3-24212-01",
+    //    "System.Net.Requests": "4.0.10",
+    //    "System.Xml.XPath": "4.0.0"
+    //  },
+    //  "buildOptions": { "define": [ "NetCore" ] }
+    //}
+  },
+  "buildOptions": {
+    "optimize": true,
+    "platform": "anycpu",
+    "keyFile": "../Shared/ILuffy.snk"
+  },
+  "packOptions": {
+    "files": {
+      "includeFiles": "bin/Release/net35/EWSCore.dll",
+      "exclude": [ "**" ],
+      "mappings": {
+        "net35/EWSCore.dll": "bin/Release/net35/EWSCore.dll"
+      }
+    },
+    "repository": { "url": "https://github.com/iLuffy/ews-managed-api" },
+    "summary": "Microsoft Exchange Web Services",
+    "releaseNotes": "Export property from OAuthCredentials to allow user to change the token before authentication.",
+    "licenseUrl": "https://github.com/iLuffy/ews-managed-api/blob/master/license.txt",
+    "tags": [ "EWS", "Exchange Web Services" ],
+    "requireLicenseAcceptance": true
+  },
+  "runtimes": {
+    "win": {}
+  }
+}
