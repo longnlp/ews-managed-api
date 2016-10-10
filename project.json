@@ -1,6 +1,6 @@
 ﻿{
   "name": "EWSCore",
-  "version": "0.0.1-*",
+  "version": "0.0.2-*",
   "title": "Microsoft Exchange Managed API",
   "copyright": "© Microsoft Corporation.  All rights reserved.",
   "description": "Microsoft Exchange Web Services (EWS Managed API)",
@@ -20,6 +20,17 @@
         "System.Drawing": "2.0.0.0",
         "System.Security": "2.0.0.0"
       }
+    },
+    "net40": {
+      "frameworkAssemblies": {
+        "System.Xml": "4.0.0.0",
+        "System.Web": "4.0.0.0",
+        "System.Web.Services": "4.0.0.0",
+        "System.Data": "4.0.0.0",
+        "System.DirectoryServices": "4.0.0.0",
+        "System.Drawing": "4.0.0.0",
+        "System.Security": "4.0.0.0"
+      }
     }
     //"netstandard1.3": {
     //  "imports": "dotnet",
@@ -32,23 +43,25 @@
     //  },
     //  "buildOptions": { "define": [ "NetCore" ] }
     //}
-  },
+    },
   "buildOptions": {
     "optimize": true,
     "platform": "anycpu",
-    "keyFile": "../Shared/ILuffy.snk"
+    "keyFile": "../Shared/ILuffy.snk",
+    "debugType": "full"
   },
   "packOptions": {
     "files": {
-      "includeFiles": "bin/Release/net35/EWSCore.dll",
+      "includeFiles": [ "bin/Release/net35/EWSCore.dll", "bin/Release/net40/EWSCore.dll" ],
       "exclude": [ "**" ],
       "mappings": {
-        "net35/EWSCore.dll": "bin/Release/net35/EWSCore.dll"
+        "net35/EWSCore.dll": "bin/Release/net35/EWSCore.dll",
+        "net40/EWSCore.dll": "bin/Release/net40/EWSCore.dll"
       }
     },
     "repository": { "url": "https://github.com/iLuffy/ews-managed-api" },
     "summary": "Microsoft Exchange Web Services",
-    "releaseNotes": "Export property from OAuthCredentials to allow user to change the token before authentication.",
+    "releaseNotes": "add .net framework 4.0 support.",
     "licenseUrl": "https://github.com/iLuffy/ews-managed-api/blob/master/license.txt",
     "tags": [ "EWS", "Exchange Web Services" ],
     "requireLicenseAcceptance": true

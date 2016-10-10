@@ -3,7 +3,9 @@
   "version": 2,
   "targets": {
     ".NETFramework,Version=v3.5": {},
-    ".NETFramework,Version=v3.5/win": {}
+    ".NETFramework,Version=v3.5/win": {},
+    ".NETFramework,Version=v4.0": {},
+    ".NETFramework,Version=v4.0/win": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
@@ -16,6 +18,15 @@
       "System.Web >= 2.0.0",
       "System.Web.Services >= 2.0.0",
       "System.Xml >= 2.0.0"
+    ],
+    ".NETFramework,Version=v4.0": [
+      "System.Data >= 4.0.0",
+      "System.DirectoryServices >= 4.0.0",
+      "System.Drawing >= 4.0.0",
+      "System.Security >= 4.0.0",
+      "System.Web >= 4.0.0",
+      "System.Web.Services >= 4.0.0",
+      "System.Xml >= 4.0.0"
     ]
   },
   "tools": {},
