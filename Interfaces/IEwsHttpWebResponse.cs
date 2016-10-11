@@ -32,7 +32,7 @@ namespace Microsoft.Exchange.WebServices.Data
     /// <summary>
     /// Interface representing HTTP web response.
     /// </summary>
-    internal interface IEwsHttpWebResponse : IDisposable
+    public interface IEwsHttpWebResponse : IDisposable
     {
         /// <summary>
         /// Closes the response stream.

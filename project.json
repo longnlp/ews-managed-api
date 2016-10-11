@@ -1,6 +1,6 @@
 ﻿{
   "name": "EWSCore",
-  "version": "0.0.3-*",
+  "version": "0.0.4-*",
   "title": "Microsoft Exchange Managed API",
   "copyright": "© Microsoft Corporation.  All rights reserved.",
   "description": "Microsoft Exchange Web Services (EWS Managed API)",
@@ -61,7 +61,7 @@
     },
     "repository": { "url": "https://github.com/iLuffy/ews-managed-api" },
     "summary": "Microsoft Exchange Web Services",
-    "releaseNotes": "add .net framework 4.0 support.",
+    "releaseNotes": "Make the PrepareWebRequest is available for derived class.",
     "licenseUrl": "https://github.com/iLuffy/ews-managed-api/blob/master/license.txt",
     "tags": [ "EWS", "Exchange Web Services" ],
     "requireLicenseAcceptance": true

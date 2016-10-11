@@ -105,7 +105,7 @@ namespace Microsoft.Exchange.WebServices.Data
         /// This method is called to apply credentials to a service request before the request is made.  
         /// </summary>
         /// <param name="request">The request.</param>
-        internal virtual void PrepareWebRequest(IEwsHttpWebRequest request)
+        protected internal virtual void PrepareWebRequest(IEwsHttpWebRequest request)
         {
             // do nothing by default.
         }

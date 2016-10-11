@@ -36,29 +36,17 @@ namespace Microsoft.Exchange.WebServices.Data
     /// 
     /// OAuthCredentials is supported for Exchange 2013 or above.
     /// </summary>
-    public class OAuthCredentials : ExchangeCredentials
+    public sealed class OAuthCredentials : ExchangeCredentials
     {
-        /// <summary>
-        /// Bearer Authentication Type
-        /// </summary>
-        protected const string BearerAuthenticationType = "Bearer";
+        private const string BearerAuthenticationType = "Bearer";
 
         private static readonly Regex validTokenPattern = new Regex(
             @"^[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]*$",
             RegexOptions.Compiled);
 
-        private string token;
+        private readonly string token;
 
         private readonly ICredentials credentials;
-
-        /// <summary>
-        /// The JSON web token string.
-        /// </summary>
-        protected virtual string Token
-        {
-            get { return token; }
-            set { token = value; }
-        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OAuthCredentials"/> class.
@@ -126,14 +114,14 @@ namespace Microsoft.Exchange.WebServices.Data
         /// Add the Authorization header to a service request.
         /// </summary>
         /// <param name="request">The request</param>
-        internal override void PrepareWebRequest(IEwsHttpWebRequest request)
+        protected internal override void PrepareWebRequest(IEwsHttpWebRequest request)
         {
             base.PrepareWebRequest(request);
 
-            if (this.Token != null)
+            if (this.token != null)
             {
                 request.Headers.Remove(HttpRequestHeader.Authorization);
-                request.Headers.Add(HttpRequestHeader.Authorization, this.Token);
+                request.Headers.Add(HttpRequestHeader.Authorization, this.token);
             }
             else
             {

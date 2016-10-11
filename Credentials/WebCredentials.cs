@@ -88,7 +88,7 @@ namespace Microsoft.Exchange.WebServices.Data
         /// Applies NetworkCredential associated with this instance to a service request.
         /// </summary>
         /// <param name="request">The request.</param>
-        internal override void PrepareWebRequest(IEwsHttpWebRequest request)
+        protected internal override void PrepareWebRequest(IEwsHttpWebRequest request)
         {
             request.Credentials = this.credentials;
         }
