@@ -1,0 +1,1 @@
+nuget push ..\nupkgs\*.nupkg -Source https://www.nuget.org/api/v2/package

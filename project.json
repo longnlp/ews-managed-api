@@ -1,6 +1,6 @@
 ﻿{
   "name": "EWSCore",
-  "version": "0.0.2-*",
+  "version": "0.0.3-*",
   "title": "Microsoft Exchange Managed API",
   "copyright": "© Microsoft Corporation.  All rights reserved.",
   "description": "Microsoft Exchange Web Services (EWS Managed API)",
@@ -55,8 +55,8 @@
       "includeFiles": [ "bin/Release/net35/EWSCore.dll", "bin/Release/net40/EWSCore.dll" ],
       "exclude": [ "**" ],
       "mappings": {
-        "net35/EWSCore.dll": "bin/Release/net35/EWSCore.dll",
-        "net40/EWSCore.dll": "bin/Release/net40/EWSCore.dll"
+        "lib/net35/EWSCore.dll": "bin/Release/net35/EWSCore.dll",
+        "lib/net40/EWSCore.dll": "bin/Release/net40/EWSCore.dll"
       }
     },
     "repository": { "url": "https://github.com/iLuffy/ews-managed-api" },

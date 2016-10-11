@@ -31,6 +31,10 @@
 		<Exec Condition="Exists('$(NugetPkgs)')" Command="rd  /Q /S $(NugetPkgs)"></Exec>
 	</Target>
 	
+	<Target Name="CleanSymbolsPkg" >
+		<Exec Condition="Exists('$(NugetPkgs)')" Command="del  /Q /F /S $(NugetPkgs)\*.symbols.nupkg"></Exec>
+	</Target>
+	
 	<Target Name="Compile" DependsOnTargets="UpdateAssemblyVersion">
 		<MSBuild Projects="..\Microsoft.Exchange.WebServices.Data.sln"     
 				Properties="Configuration=Release;Platform=Any CPU;Optimize=true" />
