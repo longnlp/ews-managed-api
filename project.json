@@ -1,6 +1,6 @@
 ﻿{
   "name": "EWSCore",
-  "version": "0.0.4-*",
+  "version": "0.0.6-*",
   "title": "Microsoft Exchange Managed API",
   "copyright": "© Microsoft Corporation.  All rights reserved.",
   "description": "Microsoft Exchange Web Services (EWS Managed API)",
@@ -19,7 +19,7 @@
         "System.DirectoryServices": "2.0.0.0",
         "System.Drawing": "2.0.0.0",
         "System.Security": "2.0.0.0"
-      }
+      },
     },
     "net40": {
       "frameworkAssemblies": {
@@ -30,6 +30,9 @@
         "System.DirectoryServices": "4.0.0.0",
         "System.Drawing": "4.0.0.0",
         "System.Security": "4.0.0.0"
+      },
+      "buildOptions": {
+        "define": [ "net40" ]
       }
     }
     //"netstandard1.3": {

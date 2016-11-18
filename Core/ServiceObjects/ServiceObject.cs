@@ -127,6 +127,17 @@ namespace Microsoft.Exchange.WebServices.Data
         }
 
         /// <summary>
+        /// SetXmlElementName sets the XmlElementName to the particular name in special situation:
+        /// For example:
+        ///     CreateItem with EmailMessage, However the response is MeetingRequest.
+        /// </summary>
+        /// <param name="name">the element name from the response</param>
+        internal void SetXmlElementName(string name)
+        {
+            xmlElementName = name;
+        }
+
+        /// <summary>
         /// Gets the name of the change XML element.
         /// </summary>
         /// <returns>XML element name,</returns>

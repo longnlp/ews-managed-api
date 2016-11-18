@@ -161,7 +161,7 @@ namespace Microsoft.Exchange.WebServices.Data
                         }
                         else
                         {
-                            if (string.Compare(this.LocalName, serviceObject.GetXmlElementName(), StringComparison.Ordinal) != 0)
+                            if (!ProcessTypeMatch(LocalName, serviceObject))
                             {
                                 throw new ServiceLocalException(
                                     string.Format(
@@ -219,6 +219,58 @@ namespace Microsoft.Exchange.WebServices.Data
         public ExchangeService Service
         {
             get { return this.service; }
+        }
+
+        private bool ProcessTypeMatch<TServiceObject>(string typeName, TServiceObject serviceObject)
+            where TServiceObject : ServiceObject
+        {
+            var matched = false;
+
+            if (string.Compare(this.LocalName, serviceObject.GetXmlElementName(), StringComparison.Ordinal) != 0)
+            {
+                if (service.ReadCompatibleServiceObject)
+                {
+                    matched = IsTypeCompatibleWithServiceObject(typeName, serviceObject);
+                }
+            }
+            else
+            {
+                matched = true;
+            }
+
+            return matched;
+        }
+
+        /// <summary>
+        /// Get the compatible from the type name with the service object type
+        /// </summary>
+        /// <param name="typeName"></param>
+        /// <param name="serviceObjectType"></param>
+        /// <returns></returns>
+        private static bool IsTypeCompatibleWithServiceObject<TServiceObject>(string typeName, TServiceObject serviceObject)
+            where TServiceObject : ServiceObject
+        {
+            var index = new Dictionary<string, Type>(StringComparer.OrdinalIgnoreCase)
+            {
+                { "MeetingMessage", typeof(MeetingMessage) },
+                { "MeetingCancellation", typeof(MeetingCancellation) },
+                { "MeetingRequest", typeof(MeetingRequest) },
+                { "MeetingResponse", typeof(MeetingResponse) },
+            };
+
+            Type type;
+
+            if (index.TryGetValue(typeName, out type))
+            {
+                if (serviceObject.GetType().IsAssignableFrom(type))
+                {
+                    serviceObject.SetXmlElementName(typeName);
+
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

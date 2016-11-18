@@ -5839,6 +5839,15 @@ namespace Microsoft.Exchange.WebServices.Data
             }
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether read compatible service object 
+        /// when reading response. 
+        /// For example, the service object is EmailMessage, 
+        /// and the response message is MeetingCancellation, 
+        /// when this option is true, all the response are stored in EmailMessage instance.
+        /// </summary>
+        public bool ReadCompatibleServiceObject { get; set; }
+
         #endregion
     }
 }
