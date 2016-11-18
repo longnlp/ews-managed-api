@@ -1,9 +1,9 @@
 ﻿{
   "name": "EWSCore",
-  "version": "0.0.6-*",
+  "version": "0.0.7-*",
   "title": "Microsoft Exchange Managed API",
-  "copyright": "© Microsoft Corporation.  All rights reserved.",
-  "description": "Microsoft Exchange Web Services (EWS Managed API)",
+  "copyright": "© ILuffy",
+  "description": "Microsoft Exchange Web Services (EWS Managed API). The code is in https://github.com/iLuffy/ews-managed-api which is forked from https://github.com/OfficeDev/ews-managed-api. This Api is created to include some improvements based on latest code.",
 
   "dependencies": {
 
@@ -19,7 +19,7 @@
         "System.DirectoryServices": "2.0.0.0",
         "System.Drawing": "2.0.0.0",
         "System.Security": "2.0.0.0"
-      },
+      }
     },
     "net40": {
       "frameworkAssemblies": {
@@ -46,7 +46,7 @@
     //  },
     //  "buildOptions": { "define": [ "NetCore" ] }
     //}
-    },
+  },
   "buildOptions": {
     "optimize": true,
     "platform": "anycpu",
@@ -63,8 +63,8 @@
       }
     },
     "repository": { "url": "https://github.com/iLuffy/ews-managed-api" },
-    "summary": "Microsoft Exchange Web Services",
-    "releaseNotes": "Make the PrepareWebRequest is available for derived class.",
+    "summary": "Microsoft Exchange Web Services Api. ",
+    "releaseNotes": "Include the category class, and fix the minor issue.",
     "licenseUrl": "https://github.com/iLuffy/ews-managed-api/blob/master/license.txt",
     "tags": [ "EWS", "Exchange Web Services" ],
     "requireLicenseAcceptance": true
