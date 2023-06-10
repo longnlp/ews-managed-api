@@ -183,3 +183,6 @@ UpgradeLog*.htm
 # Microsoft Fakes
 FakesAssemblies/
 /.vs/slnx.sqlite
+
+# OneBlueD Test Credentials
+*.tests.json
