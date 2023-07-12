@@ -9,6 +9,7 @@
     using Microsoft.Exchange.WebServices.Data;
     using Microsoft.Identity.Client;
     using Newtonsoft.Json;
+    using Xunit.Abstractions;
 
     public class M365Context
     {
@@ -65,11 +66,14 @@
 
     public abstract class BaseTokenTest
     {
+        protected readonly ITestOutputHelper output;
+
         protected M365Context m365Context = null;
 
-        public BaseTokenTest()
+        public BaseTokenTest(ITestOutputHelper output)
         {
             m365Context = TestUtility.Get<M365Context>();
+            this.output = output;
         }
 
         private ExchangeService CreateExchangeServiceWithToken(UserInformation userInformation, string token)

@@ -186,3 +186,6 @@ FakesAssemblies/
 
 # OneBlueD Test Credentials
 *.tests.json
+
+# VS Solution Temporary File
+.vs/
